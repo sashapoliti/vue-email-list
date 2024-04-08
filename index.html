@@ -37,7 +37,7 @@
   </head>
   <body>
     <div id="app" >
-      <ul>
+      <ul v-if="mails.length === maxMails">
         <li v-for="(mail) in mails">{{mail}}</li>
       </ul>
     </div>

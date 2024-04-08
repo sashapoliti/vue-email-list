@@ -8,21 +8,17 @@ createApp({
     };
   },
   methods: {
-    getRandomMail() {
-      axios.get('https://flynn.boolean.careers/exercises/api/random/mail').then((response) => response.data.response)
-    },
-    generateMails(nMax) {
-      const genMails = [];
-      while (genMails.length < nMax) {
-        const mail = this.getRandomMail;
-        genMails.push(mail);
-        console.log(this.getRandomMail);
-        console.log(genMails);
-      }
-      this.mails = [...genMails]
+    getRandomMailsList(nMax) {
+      this.mails = [];
+      for (let i = 0; i < nMax; i++) {
+        axios.get('https://flynn.boolean.careers/exercises/api/random/mail').then((response) => {
+        const mail = response.data.response;        
+        this.mails.push(mail);
+      });
+      }      
     }
   },
   created() {
-    this.generateMails(this.maxMails);
+    this.getRandomMailsList(this.maxMails);
   }
 }).mount("#app");
