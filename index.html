@@ -37,7 +37,9 @@
   </head>
   <body>
     <div id="app" >
-      <span>{{mails[0]}}</span>
+      <ul>
+        <li v-for="(mail) in mails">{{mail}}</li>
+      </ul>
     </div>
   </body>
 </html>

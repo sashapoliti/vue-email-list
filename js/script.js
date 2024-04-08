@@ -9,15 +9,20 @@ createApp({
   },
   methods: {
     getRandomMail() {
-      axios.get('https://flynn.boolean.careers/exercises/api/random/mail').then((response) => {
-        /* console.log(response); */
-        this.mails.push(response.data.response);
-      })
+      axios.get('https://flynn.boolean.careers/exercises/api/random/mail').then((response) => response.data.response)
+    },
+    generateMails(nMax) {
+      const genMails = [];
+      while (genMails.length < nMax) {
+        const mail = this.getRandomMail;
+        genMails.push(mail);
+        console.log(this.getRandomMail);
+        console.log(genMails);
+      }
+      this.mails = [...genMails]
     }
   },
-  computed: {},
-  mounted() {},
   created() {
-    this.getRandomMail();
+    this.generateMails(this.maxMails);
   }
 }).mount("#app");
